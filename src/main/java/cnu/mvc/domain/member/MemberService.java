@@ -18,9 +18,14 @@ public class MemberService {
     }
 
     public Member validateMember(String email, String pwd) {
-        Member findMember = findById(1L);
-        
-        return findMember;
+        Member check_member = findByEmail(email);
+
+        if (check_member == null || !check_member.getPwd().equals(pwd)){
+            
+            throw new IllegalArgumentException("이메일 또는 비밀번호를 확인해주세요.");
+            
+        }
+        return check_member;
     }
 
     public Member findById(Long id) {
@@ -30,7 +35,5 @@ public class MemberService {
     // 구현
     public Member findByEmail(String email) {
         return memberRepository.findByEmail(email);
-        
     }
-
 }
