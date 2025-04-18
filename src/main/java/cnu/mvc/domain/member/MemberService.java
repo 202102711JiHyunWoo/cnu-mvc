@@ -9,6 +9,7 @@ public class MemberService {
 
     private final MemberRepository memberRepository;
 
+    
     public Member join(Member member){
         // 이메일 중복 구현
         if(findByEmail(member.getEmail()) != null ) {
